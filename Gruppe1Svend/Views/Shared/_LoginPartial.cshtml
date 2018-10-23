@@ -1,17 +1,25 @@
-@using System.Security.Claims
+@*  Gruppe 1 - Birk, Peter & René
+    Har valgt at bruge Microsoft Live login model
+    Som så replyer tilbage til vores Webapplikation
+
+    reply Url :  https://gruppe1svend.azurewebsites.net/signin-oidc
+
+*@
+
+
+
+@using System.Security.Principal
+
 
 @if (User.Identity.IsAuthenticated)
 {
-    var identity = User.Identity as ClaimsIdentity; // Azure AD V2 endpoint specific
-    string preferred_username = identity.Claims.FirstOrDefault(c => c.Type == "preferred_username")?.Value;
     <ul class="nav navbar-nav navbar-right">
-        <li class="navbar-text">Hello @preferred_username</li>
-        <li><a asp-area="" asp-controller="Account" asp-action="SignOut">Sign out</a></li>
+        <li class="navbar-text">Logget ind: @ViewData["Name"] <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a asp-area="AzureAD" asp-controller="Account" asp-action="SignOut">Logud</a></button>  </li>
     </ul>
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="" asp-controller="Account" asp-action="Signin">Sign in</a></li>
+        <li><a asp-area="AzureAD" asp-controller="Account" asp-action="SignIn">Login</a></li>
     </ul>
 }

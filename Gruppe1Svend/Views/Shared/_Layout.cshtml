@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@*Gruppe 1 - Birk, Peter & René
+   Her er standard layoutet til hvordan header osv skal se ud 
+    
+*@
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,34 +25,23 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Ordreoversigt <span class="sr-only">(current)</span></a>
+                    @*<a class="nav-link" href="#">Ordreoversigt <span class="sr-only">(current)</span></a>*@
+                    <a class="nav-link" asp-controller="Home" asp-action="Ordreoversigt">Ordreoversigt</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Home" asp-action="Lagerstatus">Lagerstatus</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Rapport
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Ordre</a>
-                        <a class="dropdown-item" href="#">Lager</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Kunder</a>
-                    </div>
-                </li>
+
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Test</a>
+                    <a class="nav-link" asp-controller="Home" asp-action="Rapporter">Rapporter</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <partial name="_LoginPartial" />
         </div>
     </nav>
 
     <partial name="_CookieConsentPartial" />
+
 
     <div class="container body-content">
         @RenderBody()
@@ -56,30 +50,6 @@
             <p>&copy; 2018 - Gruppe1Svend</p>
         </footer>
     </div>
-
-    <!--
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-        -->
-
     <script src="~/js/site.min.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)

@@ -1,4 +1,7 @@
-﻿using System;
+﻿ /* Gruppe 1 - Birk, Peter & René
+ Home controller */ 
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -6,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Gruppe1Svend.Models;
+using System.Security.Claims;
 
 namespace Gruppe1Svend.Controllers
 {
@@ -14,17 +18,26 @@ namespace Gruppe1Svend.Controllers
     {
         public IActionResult Ordreoversigt()
         {
+            // Fanger hvilken bruger der er logget ind og sender dette videre til Layout.cshtml
+            String name = "";
+            ClaimsIdentity id = ((ClaimsIdentity)User.Identity);
+            Claim claim = id.FindFirst(c => c.Type == "name");
+            if (claim != null)
+            {
+                name = claim.Value;
+
+            }
             return View();
         }
 
-        public IActionResult Lagerstatus()
+            public IActionResult Lagerstatus()
         {
             ViewData["Message"] = "Lagerstatus";
 
             return View();
         }
 
-        public IActionResult Rapport()
+        public IActionResult Rapporter()
         {
             ViewData["Message"] = "Rapporter";
 
@@ -44,3 +57,4 @@ namespace Gruppe1Svend.Controllers
         }
     }
 }
+
