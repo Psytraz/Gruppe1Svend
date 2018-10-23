@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+    <h2>Ordreoversigt</h2>
+    <p>Indtast det du vil søge efter</p>
+    <input class="form-control" id="myInput" type="text" placeholder="Søg..">
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"><a href="#" data-toggle="tooltip" title="Vores ordrenummer ">Ordrenr</a></th>
+                <th scope="col"><a href="#" data-toggle="tooltip" title="Kundenummer">Kundenr</a></th>
+                <th scope="col"><a href="#" data-toggle="tooltip" title="Kundenavn">Kundenavn</a></th>
+                <th scope="col"><a href="#" data-toggle="tooltip" title="Ordre bestilt pr. dato">Ordredato</a></th>
+                <th scope="col"><a href="#" data-toggle="tooltip" title="Forventet leveringsdato">Leveringsdato</a></th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            <tr>
+                <th scope="row">1</th>
+                <td>000001</td>
+                <td>Danfoss</td>
+                <td>1/1-2018</td>
+                <td>15/1-2018</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>000002</td>
+                <td>Mærsk</td>
+                <td>1/2-2018</td>
+                <td>15/2-2018</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>000003</td>
+                <td>T.hansen</td>
+                <td>1/3-2018</td>
+                <td>15/3-2018</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>

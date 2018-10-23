@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+    <h2>Lagerstatus</h2>
+    <p>Indtast det du vil søge efter</p>
+    <input class="form-control" id="myInput" type="text" placeholder="Søg..">
+    <br>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"><a href="#" data-toggle="tooltip" title="Vores varenummer ">Varenummer</a></th>
+                <th scope="col"><a href="#" data-toggle="tooltip" title="Varens navn">Beskrivelse</a></th>
+                <th scope="col"><a href="#" data-toggle="tooltip" title="Hvad er der aktuelt på lager">Lagerstatus</a></th>
+                <th scope="col"><a href="#" data-toggle="tooltip" title="Bestilte i ordre">Reserverede</a></th>
+            </tr>
+        </thead>
+        <tbody id="myTable">
+            <tr>
+                <th scope="row">1</th>
+                <td>Board</td>
+                <td>100</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Clips</td>
+                <td>200</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Strip</td>
+                <td>300</td>
+                <td>50</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
